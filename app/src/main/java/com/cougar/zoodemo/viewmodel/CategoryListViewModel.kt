@@ -38,7 +38,7 @@ class CategoryListViewModel(var mAdapter: CategoryListAdapter, val frag : Catego
 
     override fun itemClick(catetory: CategoryResultContent) {
         Log.e(TAG, "我要去這個館 : ${catetory.E_Name}")
-        var action = CategoryListFragmentDirections.actionNavCategorylisyToNavMixpage(catetory)
+        var action = CategoryListFragmentDirections.actionNavCategorylisyToNavMixpage(catetory, catetory.E_Name)
         frag.findNavController().navigate(action)
     }
 }

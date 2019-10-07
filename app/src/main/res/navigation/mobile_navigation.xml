@@ -18,12 +18,16 @@
 
     <fragment
         android:id="@+id/nav_mixpage"
-        android:name="com.cougar.zoodemo.ui.mixpage.MixPageFragment">
+        android:name="com.cougar.zoodemo.ui.mixpage.MixPageFragment"
+        android:label="{title}">
         <action
             android:id="@+id/action_nav_mixpage_to_nav_plantdetail"
             app:destination="@id/nav_plantdetail" />
         <argument
             android:name="categoryContent"
             app:argType="com.cougar.zoodemo.model.category.CategoryResultContent" />
+        <argument
+            android:name="title"
+            app:argType="string" />
     </fragment>
 </navigation>

@@ -1,5 +1,6 @@
 package com.cougar.zoodemo.ui.mixpage
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.cougar.zoodemo.MainActivity
 import com.cougar.zoodemo.R
 import com.cougar.zoodemo.adapter.mixpage.PlantListAdapter
 import com.cougar.zoodemo.model.category.CategoryResultContent
@@ -25,9 +27,9 @@ class MixPageFragment : Fragment() {
     lateinit var mArgs: CategoryResultContent
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
 //        ViewModelProviders.of(this).get(MixPageViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_mixpage, container, false)
@@ -44,8 +46,8 @@ class MixPageFragment : Fragment() {
         recyclerView.adapter = adapter
 
         mMixPageViewModel =
-            ViewModelProviders.of(this, MixPageFactory(activity!!.application, adapter, mArgs))
-                .get(MixPageViewModel::class.java)
+                ViewModelProviders.of(this, MixPageFactory(activity!!.application, adapter, mArgs))
+                        .get(MixPageViewModel::class.java)
 
 //        mMixPageViewModel = MixPageViewModel(adapter, mArgs)
         mMixPageViewModel.info.observe(this, Observer { cateInfo.text = it })
@@ -58,8 +60,8 @@ class MixPageFragment : Fragment() {
         return root
     }
 
-    override fun onResume() {
-        super.onResume()
-        activity?.actionBar?.title = mArgs.E_Name
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        (view.context as MainActivity).title = mArgs.E_Name
     }
 }
